@@ -1,16 +1,16 @@
 const express = require("express");
 const router = express.Router();
-const { list } = require("../data/data.json");
+const { recipes } = require("../data/data.json");
 
 /* GET home page. */
 router.get("/", function(req, res) {
-    res.render("index", { list });
+    res.render("index", { recipes });
 });
 
 /* GET recipe page. */
 router.get("/recipes/:id", function(req, res) {
     const recipeId = req.params.id;
-    const recipe = list.find(({ id }) => id === +recipeId);
+    const recipe = recipes.find(({ id }) => id === +recipeId);
     if (recipe) {
         res.render("recipe", { recipe });
     } else {
